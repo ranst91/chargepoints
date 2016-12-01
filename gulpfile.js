@@ -4,7 +4,6 @@ var gulp = require('gulp');
 var connect = require('gulp-connect'); //run a dev server
 var open = require('gulp-open'); //open a url in a web browser
 var babel = require('gulp-babel');
-var source = require('vinyl-source-stream'); //Use conventional text streams with Gulp
 var concat = require('gulp-concat'); // Add files together
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
@@ -15,8 +14,9 @@ var config = {
     devBaseUrl: 'http://localhost',
     paths: {
         html: './src/*.html',
-        views: './src/*/**.html',
+        views: './src/**/**.html',
         js: './src/**/*.js',
+        vendor: 'bower_components/**/**.min.js',
         css: [
             'node_modules/bootstrap/dist/css/bootstrap.min.css',
             'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
@@ -78,6 +78,13 @@ gulp.task('css', function () {
        .pipe(gulp.dest(config.paths.dist + '/css'))
 });
 
+gulp.task('vendor', function () {
+    gulp.src(config.paths.vendor)
+        .pipe(concat('vendor.min.js'))
+        .pipe(gulp.dest(config.paths.dist + '/scripts'))
+        .pipe(connect.reload());
+});
+
 gulp.task('js', function () {
     gulp.src(config.paths.js)
         .pipe(babel({presets: ['es2015']}))
@@ -100,4 +107,4 @@ gulp.task('watch', function () {
  * 4. Set up a local dev server, Open a web browser the get the stuff running
  * 5. Watch for any real time changes
  */
-gulp.task('default', ['html', 'views', 'json', 'sass', 'css', 'js', 'open', 'watch']);
+gulp.task('default', ['html', 'views', 'json', 'sass', 'css', 'vendor', 'js', 'open', 'watch']);
