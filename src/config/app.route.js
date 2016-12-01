@@ -21,6 +21,14 @@
                 url: '/auth/login',
                 templateUrl: 'views/login.html',
                 controller: 'LoginController as vm'
+            })
+            .state('logout', {
+                url: '/auth/logout',
+                template: '',
+                controller: function (authService, $state) {
+                    authService.logout();
+                    $state.go('home');
+                }
             });
     }
 })();

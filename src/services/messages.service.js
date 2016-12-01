@@ -12,7 +12,7 @@
             error: error,
             success: success
         };
-        return Handler;
+        return service;
         ////////////////////
 
         /**

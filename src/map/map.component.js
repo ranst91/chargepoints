@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('app')
-        .component('gMap', {
+        .component('chargepoints', {
             templateUrl: 'views/map.component.html',
             bindings: {
                 markers: '<',

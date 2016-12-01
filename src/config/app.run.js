@@ -15,7 +15,8 @@
             let restrictedPage = publicPages.indexOf($location.path()) === -1;
             if (restrictedPage && !$localStorage.currentUser) {
                 $rootScope.isAuthenticated = false;
-                $state.go('login');
+                // $state.go('login');
+                $location.path( "/auth/login" );
             }
         });
     }

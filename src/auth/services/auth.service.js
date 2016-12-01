@@ -3,7 +3,7 @@
     angular.module('app.auth')
         .service('authService', authService);
 
-    function authService($http, $httpParamSerializer, $localStorage) {
+    function authService($http, $httpParamSerializer, $rootScope, $localStorage) {
         /**
          * Exposed functions available from this service
          * @type {{login: login, logout: logout, getUserInfo: getUserInfo}}
