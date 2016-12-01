@@ -1,0 +1,17 @@
+<!--<div class="map__frame" ng-if="isAuthenticated">-->
+    <!--<div class="col-md-10 col-md-offset-1">-->
+        <!--<div class="panel material-box">-->
+            <!--<div class="panel-heading">Available charging points</div>-->
+            <!--<div class="panel-body">-->
+                <!--<div class="map" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{vm.googleMapsUrl}}">-->
+
+                    <!--<ng-map center="{{vm.markers[0].lat}}, {{vm.markers[0].lng}}" zoom="3" default-style="false">-->
+                        <!--<marker ng-repeat="marker in vm.markers" position="{{marker.lat}}, {{marker.lng}}"></marker>-->
+                    <!--</ng-map>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<g-map ng-if="isAuthenticated" markers="vm.markers" center="vm.center"></g-map>
